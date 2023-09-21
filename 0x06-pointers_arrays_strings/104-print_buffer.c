@@ -1,46 +1,50 @@
-#include &quot;main.h&quot;
-#include &lt;stdio.h&gt;
+#include "main.h"
+#include <stdio.h>
+
 /**
-* print_buffer - prints buffer
-* @b: buffer
-* @size: size
-* Return: void
-*/
+ * print_buffer - prints buffer
+ * @b: buffer
+ * @size: size
+ * Return: void
+ */
+
 void print_buffer(char *b, int size)
 {
-int o, j, i;
-o = 0;
-if (size &lt;= 0)
-{
-printf(&quot;\n&quot;);
-return;
-}
-while (o &lt; size)
-{
-j = size - o &lt; 10 ? size - o : 10;
-printf(&quot;%08x: &quot;, o);
-for (i = 0; i &lt; 10; i++)
-{
-if (i &lt; j)
-printf(&quot;%02x&quot;, *(b + o + i));
-else
-printf(&quot; &quot;);
-if (i % 2)
-{
-printf(&quot; &quot;);
-}
-}
+	int o, j, i;
 
-for (i = 0; i &lt; j; i++)
-{
-int c = *(b + o + i);
-if (c &lt; 32 || c &gt; 132)
-{
-c = &#39;.&#39;;
-}
-printf(&quot;%c&quot;, c);
-}
-printf(&quot;\n&quot;);
-o += 10;
-}
+	o = 0;
+
+	if (size <= 0)
+	{
+		printf("\n");
+		return;
+	}
+	while (o < size)
+	{
+		j = size - o < 10 ? size - o : 10;
+		printf("%08x: ", o);
+		for (i = 0; i < 10; i++)
+		{
+			if (i < j)
+				printf("%02x", *(b + o + i));
+			else
+				printf("  ");
+			if (i % 2)
+			{
+				printf(" ");
+			}
+		}
+		for (i = 0; i < j; i++)
+		{
+			int c = *(b + o + i);
+
+			if (c < 32 || c > 132)
+			{
+				c = '.';
+			}
+			printf("%c", c);
+		}
+		printf("\n");
+		o += 10;
+	}
 }
