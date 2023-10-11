@@ -40,6 +40,7 @@ void print_name_uppercase(char *name)
 
 /**
  * main - check the code
+ *
  * Return: Always 0.
  */
 int main(void)
